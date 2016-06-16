@@ -1,0 +1,1 @@
+<p>Welcome to the <?php echo $title; ?> page.</p>
