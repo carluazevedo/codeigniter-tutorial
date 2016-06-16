@@ -7,6 +7,33 @@ class Form extends CI_Controller {
 
 		$this->load->library('form_validation');
 
+		$config = array(
+				array(
+						'field' => 'username',
+						'label' => 'Username',
+						'rules' => 'required'
+				),
+				array(
+						'field' => 'password',
+						'label' => 'Password',
+						'rules' => 'required',
+						'errors' => array(
+								'required' => 'You must provide a %s.'
+						)
+				),
+				array(
+						'field' => 'passconf',
+						'label' => 'Password Confirmation',
+						'rules' => 'required|matches[password]'
+				),
+				array(
+						'field' => 'email',
+						'label' => 'Email',
+						'rules' => 'required'
+				)
+		);
+		$this->form_validation->set_rules($config);
+
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->view('myform');
